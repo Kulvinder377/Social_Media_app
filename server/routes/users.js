@@ -1,0 +1,8 @@
+import express from 'express'; import User from '../models/User.js'; import Post from '../models/Post.js'; import { protect } from '../middleware/auth.js';
+const router = express.Router(); const clean = (user) => ({ id: user._id, name: user.name, username: user.username, bio: user.bio, avatar: user.avatar, followers: user.followers, following: user.following });
+router.get('/me', protect, async (req, res) => res.json(clean(await User.findById(req.userId))));
+router.patch('/me', protect, async (req, res) => { const user = await User.findByIdAndUpdate(req.userId, req.body, { new: true }); res.json(clean(user)); });
+router.get('/suggestions', protect, async (req, res) => { const me = await User.findById(req.userId); const users = await User.find({ _id: { $nin: [...me.following, me._id] } }).select('name username avatar bio').limit(6); res.json(users); });
+router.get('/:username', protect, async (req, res) => { const user = await User.findOne({ username: req.params.username }); if (!user) return res.sendStatus(404); const posts = await Post.find({ author: user._id }).populate('author', 'name username avatar').sort('-createdAt'); res.json({ user: clean(user), posts }); });
+router.post('/:id/follow', protect, async (req, res) => { const target = await User.findById(req.params.id); const me = await User.findById(req.userId); if (!target || target.id === me.id) return res.status(400).json({ message: 'Cannot follow this user' }); const follows = me.following.some((id) => id.equals(target._id)); if (follows) { me.following.pull(target._id); target.followers.pull(me._id); } else { me.following.push(target._id); target.followers.push(me._id); } await Promise.all([me.save(), target.save()]); res.json({ following: !follows }); });
+export default router;
