@@ -1,0 +1,128 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif, 'Noto Sans Devanagari', sans-serif;
+    background-color: #f0f0f0; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    background-position: center;
+}
+
+.background{
+    background-image: url(img/background.jpg); 
+    background-size: cover;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 749px;
+    height: 1123px;
+}
+
+.poster {
+    background: linear-gradient(135deg, rgba(255, 140, 0, 0.7), rgba(0, 123, 255, 0.9)); 
+    width: 749px;
+    height: 1123px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    border: 10px solid #00b3e6;
+}
+
+.poster-content {
+    text-align: center;
+    color: white;
+}
+
+.store-logo {
+    width: 100px;
+    height: auto;
+    border-radius: 50%;
+}
+
+.store-name {
+    font-size: 4rem;
+    font-weight: bold;
+    color: red;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+}
+.name {
+    font-size: 3rem;
+    font-weight: bold;
+    color: yellow;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+}
+
+.tagline {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #f8de7e;
+    font-style: italic;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+}
+
+.products p {
+    font-size: 1.2rem;
+}
+
+.products img{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.qr-code p {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: yellow;
+}
+
+.payment-qr {
+    width: 120px;  
+    height: auto;
+    border-radius: 10px;
+}
+.social-p{
+    font-size: 1.8rem;
+    color: red;
+}
+
+.social-qr-codes {
+    margin-top: 10px;
+    font-size: 1.3rem;
+    color: yellow;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 60px;
+}
+
+.social-qr-img {
+    width: 100px;  
+    height: auto;
+    border-radius: 5px;
+}
+
+
+.contact-info {
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-radius: 0 0 20px 20px;
+    font-size: 1.1rem;
+}
+
